@@ -31,5 +31,5 @@ pub fn encrypt(aes_cipher cipher.Block, data []u8) []u8 {
 }
 
 pub fn decrypt(aes_cipher cipher.Block, data []u8) []u8 {
-	return split_array(data, aes_cipher, simple_aes.decrypt_chunk)
+	return remove_chunk_null_bytes(split_array(data, aes_cipher, simple_aes.decrypt_chunk), aes_cipher.block_size)
 }
